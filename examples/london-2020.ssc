@@ -1,0 +1,20 @@
+// Historical Sky (example) -- London, 2020-06-15 22:00 local time
+// Self-contained: copy this single file into your Stellarium scripts folder and press
+// F12 -> select it -> Run.
+// Closest star to the zenith: HIP 71548 (Bootes), 0.126 deg away.
+// MIT License -- Created by A Star Named. Tested with Stellarium 26.2.
+// https://astarnamed.com/?utm_source=github&utm_medium=example&utm_campaign=historical-sky
+
+core.setObserverLocation(-0.1278, 51.5074, 11, 0, "London, UK");
+core.setDate("2020-06-15T21:00:00", "utc", false);  // 22:00 British Summer Time (UTC+1); false = static time
+core.setTimeRate(0);
+
+ConstellationMgr.setFlagLines(true);
+ConstellationMgr.setFlagLabels(true);
+LandscapeMgr.setFlagLandscape(true);
+LandscapeMgr.setFlagAtmosphere(true);
+
+core.moveToAltAzi(90, 0);
+StelMovementMgr.zoomTo(5, 1);
+
+core.debug("Historical Sky: 2020-06-15 22:00 -- London, UK");

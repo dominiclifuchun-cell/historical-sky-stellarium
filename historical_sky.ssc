@@ -1,0 +1,22 @@
+// Historical Sky -- recreate the night sky for any date, time and location
+// Author: A Star Named -- https://astarnamed.com
+// Version: 1.0.0 -- Tested with Stellarium 26.2 -- MIT License
+//
+// Install: copy this file and historical_sky.inc into your Stellarium scripts folder:
+//   Windows: %APPDATA%\Stellarium\scripts\
+//   macOS:   ~/Library/Application Support/Stellarium/scripts/
+//   Linux:   ~/.stellarium/scripts/
+// Run: press F12 in Stellarium, select historical_sky.ssc, press Run.
+
+include("historical_sky.inc");
+
+core.setObserverLocation(SKY_LON, SKY_LAT, SKY_ALT, 0, SKY_NAME);
+core.setDate(SKY_DATE, "utc", false);   // third argument: false = static time (sky does not follow the system clock)
+core.setTimeRate(0);                    // pause the simulation
+
+ConstellationMgr.setFlagLines(true);
+ConstellationMgr.setFlagLabels(true);
+LandscapeMgr.setFlagLandscape(true);
+LandscapeMgr.setFlagAtmosphere(true);
+
+core.debug("Historical Sky loaded: " + SKY_DATE + " -- " + SKY_NAME);

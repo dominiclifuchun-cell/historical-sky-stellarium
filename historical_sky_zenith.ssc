@@ -1,0 +1,29 @@
+// Historical Sky + Zenith Star -- same setup as historical_sky.ssc, then points the
+// view straight up (the zenith) and zooms in: the star closest to the zenith for the
+// configured date/time/location sits within a few tenths of a degree of the centre.
+// Author: A Star Named -- https://astarnamed.com
+// Version: 1.0.0 -- Tested with Stellarium 26.2 -- MIT License
+
+include("historical_sky.inc");
+include("zenith_star.inc");
+
+core.setObserverLocation(SKY_LON, SKY_LAT, SKY_ALT, 0, SKY_NAME);
+core.setDate(SKY_DATE, "utc", false);    // static time: the sky does not follow the system clock
+core.setTimeRate(0);
+
+ConstellationMgr.setFlagLines(true);
+ConstellationMgr.setFlagLabels(true);
+LandscapeMgr.setFlagLandscape(true);
+LandscapeMgr.setFlagAtmosphere(true);
+
+// Look straight up and zoom in. The star recorded in zenith_star.inc is within
+// ZS_DIST_DEG degrees of the zenith for this date/time/location.
+core.moveToAltAzi(90, 0);
+StelMovementMgr.zoomTo(5, 1);
+
+core.debug("Historical Sky + Zenith Star: " + SKY_DATE + " -- " + SKY_NAME +
+           " -- closest star: " + ZS_HIP + " (" + ZS_DIST_DEG + " deg from zenith)");
+
+// Centre the view on the star itself. HIP designations resolve in scripts (verified
+// with Stellarium 26.2): the object panel then shows the catalogue entry for ZS_HIP.
+core.moveToObject(ZS_HIP);
