@@ -1,0 +1,28 @@
+// Historical Sky (example) -- Princeton, New Jersey, 1955-04-18 01:15 local time
+// Self-contained: copy this single file into your Stellarium scripts folder and press
+// F12 -> select it -> Run.
+//
+// At 1:15 a.m. on 18 April 1955, Albert Einstein died at Princeton Hospital. This is the
+// sky over Princeton at that moment. Vega, Altair, Deneb, Spica and Antares were all above
+// the horizon. The star closest to straight overhead was HIP 73476 in Bootes, an ordinary
+// seventh-magnitude star 0.154 degrees from the zenith.
+//
+// Time source: The Daily Princetonian, 18 April 1955 ("succumbed at 1:15 a. m. today").
+// New Jersey was still on Eastern Standard Time that week -- DST began 24 April -- so
+// 01:15 EST is 06:15 UTC.
+// MIT License -- Created by A Star Named. Tested with Stellarium 26.2.
+// https://astarnamed.com/?utm_source=github&utm_medium=example&utm_campaign=historical-sky
+
+core.setObserverLocation(-74.6672, 40.3573, 30, 0, "Princeton, New Jersey, USA");
+core.setDate("1955-04-18T06:15:00", "utc", false);  // 01:15 Eastern Standard Time (UTC-5); false = static time
+core.setTimeRate(0);
+
+ConstellationMgr.setFlagLines(true);
+ConstellationMgr.setFlagLabels(true);
+LandscapeMgr.setFlagLandscape(true);
+LandscapeMgr.setFlagAtmosphere(true);
+
+core.moveToAltAzi(90, 0);
+StelMovementMgr.zoomTo(5, 1);
+
+core.debug("Historical Sky: 1955-04-18 01:15 -- Princeton, New Jersey, USA");

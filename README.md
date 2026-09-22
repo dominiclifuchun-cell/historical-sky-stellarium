@@ -13,6 +13,20 @@ the star closest to straight-up sits.
 
 *Beijing, 2026-08-28 22:00 local time — the Cygnus Milky Way overhead, set by `historical_sky.ssc`.*
 
+## A specific moment: Princeton, 18 April 1955
+
+`examples/einstein-1955-04-18.ssc` rebuilds the sky over Princeton, New Jersey at 1:15 a.m.
+on 18 April 1955, the hour Albert Einstein died at Princeton Hospital. Vega, Altair, Deneb,
+Spica and Antares were all above the horizon. The star closest to straight overhead was
+HIP 73476 in Boötes, an ordinary seventh-magnitude star 0.154° from the zenith, and the one
+that happened to be there.
+
+The time is the one printed the same morning by
+[The Daily Princetonian](https://www.dailyprincetonian.com/article/2006/10/einstein-dies).
+New Jersey was still on Eastern Standard Time that week (DST began 24 April), so 01:15 EST
+is 06:15 UTC. Copy that single file into your scripts folder and press Run; no configuration
+is needed.
+
 ## Install
 
 1. Download Stellarium from https://stellarium.org (26.2 or newer).
@@ -48,11 +62,12 @@ land ~15 minutes off. Setting the time in UTC is exact. Convert with
 
 ## Examples
 
-`examples/` contains three ready-to-run, self-contained scripts — copy one file into your
+`examples/` contains four ready-to-run, self-contained scripts — copy one file into your
 scripts folder and Run:
 
 | File | Sky (UTC set in the script) |
 |---|---|
+| `einstein-1955-04-18.ssc` | 1955-04-18 01:15 EST (06:15 UTC) — Princeton, New Jersey, USA |
 | `beijing-2026.ssc` | 2026-08-28 22:00 CST (14:00 UTC) — Beijing, China |
 | `london-2020.ssc` | 2020-06-15 22:00 BST (21:00 UTC) — London, UK |
 | `new-york-2010.ssc` | 2010-07-04 22:00 EDT (02:00 UTC Jul 5) — New York, USA |
