@@ -27,6 +27,11 @@ New Jersey was still on Eastern Standard Time that week (DST began 24 April), so
 is 06:15 UTC. Copy that single file into your scripts folder and press Run; no configuration
 is needed.
 
+<img src="screenshots/einstein-1955.png" width="800" alt="The sky over Princeton, New Jersey at 1:15 a.m. on 18 April 1955, centred on HIP 73476">
+
+*Stellarium 26.2, a 5° field centred on HIP 73476 for that date, time and place. The object
+panel gives its altitude as +89°50′24.7″, which is 0.16° from the zenith.*
+
 ## Install
 
 1. Download Stellarium from https://stellarium.org (26.2 or newer).
