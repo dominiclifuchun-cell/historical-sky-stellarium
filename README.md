@@ -18,7 +18,7 @@ the star closest to straight-up sits.
 `examples/einstein-1955-04-18.ssc` rebuilds the sky over Princeton, New Jersey at 1:15 a.m.
 on 18 April 1955, the hour Albert Einstein died at Princeton Hospital. Vega, Altair, Deneb,
 Spica and Antares were all above the horizon. The star closest to straight overhead was
-HIP 73476 in Boötes, an ordinary seventh-magnitude star 0.154° from the zenith, and the one
+HIP 73476 in Boötes, an ordinary seventh-magnitude star 0.16° from the zenith, and the one
 that happened to be there.
 
 The time is the one printed the same morning by
