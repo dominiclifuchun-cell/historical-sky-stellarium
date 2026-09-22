@@ -51,19 +51,20 @@ panel gives its altitude as +89°50′24.7″, which is 0.16° from the zenith.*
 Edit `historical_sky.inc` — no other file needs touching:
 
 ```javascript
-var SKY_DATE = "2026-08-28T14:00:00";  // UTC (14:00 UTC = 22:00 in Beijing, UTC+8)
-var SKY_LON  = 116.4074;               // longitude, east positive
-var SKY_LAT  = 39.9042;                // latitude, north positive
-var SKY_ALT  = 50;                     // altitude above sea level, metres
-var SKY_NAME = "Beijing, China";       // label shown in Stellarium
+var SKY_DATE = "1955-04-18T06:15:00";        // UTC (06:15 UTC = 01:15 EST)
+var SKY_LON  = -74.6672;                     // longitude, east positive
+var SKY_LAT  = 40.3573;                      // latitude, north positive
+var SKY_ALT  = 30;                           // altitude above sea level, metres
+var SKY_NAME = "Princeton, New Jersey, USA"; // label shown in Stellarium
 ```
 
 Then run `historical_sky.ssc` again.
 
 **Why UTC:** Stellarium gives a custom observer location its own time zone, which may be
-local mean time (for Beijing that is UTC+7:45:38, not UTC+8) — a "local" time can therefore
-land ~15 minutes off. Setting the time in UTC is exact. Convert with
-`UTC = local time − UTC offset`.
+local mean time. For Princeton that is UTC−4:58:40 rather than the UTC−5:00 the clocks
+showed in 1955, so a "local" reading lands 1 minute 20 seconds off; for Beijing it is
+UTC+7:45:38 rather than UTC+8, nearly 15 minutes off. Setting the time in UTC is exact.
+Convert with `UTC = local time − UTC offset`.
 
 ## Examples
 
@@ -90,7 +91,8 @@ then copied into `zenith_star.inc`.
 
 <img src="screenshots/zenith-star.jpg" width="800" alt="The view centred on the catalog star closest to the zenith">
 
-*Same date/time/location, centred on HIP 99571 (Cygnus) — 0.13° from the zenith.*
+*The Beijing example (`examples/beijing-2026.ssc`), centred on HIP 99571 (Cygnus), 0.13° from
+the zenith.*
 
 Note: near the zenith, azimuth is ill-defined, so the script points at the zenith itself
 rather than at a bearing — the target star is within `ZS_DIST_DEG` of the centre.
