@@ -85,9 +85,39 @@ catalog star closest to the zenith for that date/time/location sits within a few
 a degree of the view centre.
 
 The catalog ID, magnitude and angular distance for your own date/time/location can be
-computed with the free calculator at A Star Named —
-https://astarnamed.com/death-sky/calculator?utm_source=github&utm_medium=readme&utm_campaign=historical-sky —
-then copied into `zenith_star.inc`.
+computed by `compute-zenith.mjs`, which lives in this repository and writes
+`zenith_star.inc` for you:
+
+```bash
+cd engine && npm install && npm run build && cd ..
+
+node compute-zenith.mjs \
+  --at 1955-04-18T06:15:00Z \
+  --lat 40.3573 --lon -74.6672 \
+  --catalog path/to/hyg.json \
+  --name "Princeton, New Jersey, USA"
+```
+
+The catalog is a JSON array of star objects. Right ascension and declination may be
+spelled `ra_degrees`/`dec_degrees` or `ra`/`dec`; HYG, Gaia DR3 and VizieR dumps all
+work. Only a ±15° declination band is searched — provably sufficient, since anything
+further out in declination cannot be the closest to the zenith. A 107,838-star HYG
+file resolves in well under a second.
+
+A partial catalog silently gives a plausible-looking wrong answer, because "closest
+entry in this file" is not "closest star in the sky". The script prints how many
+entries it actually searched, and warns when that number is small enough to suggest a
+sampled rather than whole-sky catalog.
+
+The zenith itself comes from `engine/` — twelve pure functions, zero dependencies,
+each pinned to a published reference value (GMST at J2000.0, Meeus ex. 12a, an IAU76
+round trip, azimuth anchors, and a 14-city corpus including both poles and a DST
+boundary). Run its tests with `cd engine && npm test`. It is useful on its own: it does
+what Stellarium's scripting API cannot, since that API has no way to enumerate catalog
+stars or look up an altitude and azimuth.
+
+Why the split — the scripts are the thing you run, the engine is the thing you can
+check.
 
 <img src="screenshots/zenith-star.jpg" width="800" alt="The view centred on the catalog star closest to the zenith">
 
@@ -96,6 +126,20 @@ the zenith.*
 
 Note: near the zenith, azimuth is ill-defined, so the script points at the zenith itself
 rather than at a bearing — the target star is within `ZS_DIST_DEG` of the centre.
+
+check.
+
+## Files
+
+```
+historical_sky.ssc        main script — set the location and the date, run it
+historical_sky.inc        your settings: date (UTC), longitude, latitude, altitude
+historical_sky_zenith.ssc variant that also points at the zenith
+zenith_star.inc           the nearest catalog star, written by compute-zenith.mjs
+compute-zenith.mjs        fills in zenith_star.inc from a catalog and a moment
+engine/                   the astronomy: pure functions, zero dependencies
+examples/                 four ready-to-run self-contained scripts
+```
 
 ## Compatibility
 
